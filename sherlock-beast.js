@@ -45,7 +45,7 @@ function processData(input) {
         else if (n%3 === 0) {
           c2 = n/3;
           output = output5(c2, output);
-          output += output3(c1 - 1, output);
+          output = output3(c1 - 1, output);
           console.log(output);
           output = "";
           n = 0;
