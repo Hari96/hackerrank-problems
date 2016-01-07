@@ -13,11 +13,10 @@ function processData(input) {
      for (var k = 0; k < j + 1; k++) {
        output += Math.pow(2, k) * b;
      }
-     outStr += output.toString + " ";
+     outStr += output.toString() + " ";
     }
     outStr = outStr.substring(0, outStr.length - 1);
     console.log(outStr);
-
-}
+  }
 }
 processData("2\n5 3 5\n0 2 10");

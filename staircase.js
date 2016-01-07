@@ -11,4 +11,4 @@ function staircase(n) { // n is the height of the staircase
   }
 
 }
-//(staircase(6));
+staircase(6);
