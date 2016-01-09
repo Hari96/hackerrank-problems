@@ -1,4 +1,4 @@
-// chocolate-feast2.js gives a slighlty neater solution, but still a lot of scope for improvement
+// a neater solution than chocolate-feast.js, although plenty of scope for improvement
 function processData(input) {
   var num = input.split("\n");
   var t = parseInt(num[0]);
@@ -14,15 +14,15 @@ function processData(input) {
     else {
       var n_ext = Math.floor(n_chocs/m); //No. of extra chocs.
       if (n_chocs % m >= 0) {
-        var n_ext2 = Math.floor((n_ext + n_chocs % m)/m);// Using extra wrappersS
-        n_ext += n_ext2;
-        if (n_ext2 % m >= 0) {
-          var n_ext3 = Math.floor((n_ext2 + n_ext % m)/m);
-          n_ext += n_ext3;
-          if (n_ext3 % m >= 0) {
-            var n_ext4 = Math.floor((n_ext3 + n_ext2 % m)/m);
-            n_ext += n_ext4;
-          }
+        var temp = n_ext;
+        var temp2 = n_chocs;
+        if (temp > 0) {
+          do {// taking account of extra wrappers
+            var temp3 = Math.floor((temp + temp2 % m)/m);
+            n_ext += temp3;
+            temp2 = temp;
+            temp = temp3;
+          } while (temp > 1);
         }
       }
     }
