@@ -1,4 +1,4 @@
-// a neater solution than chocolate-feast.js, although plenty of scope for improvement
+// a neater solution than chocolate-feast.js, although plenty of scope for improvement (worth looking at an element of recursion)
 function processData(input) {
   var num = input.split("\n");
   var t = parseInt(num[0]);
