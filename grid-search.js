@@ -6,71 +6,50 @@ function processData(input) {
     var RC = num[st + 1].split(" ");
     var R = parseInt(RC[0]);// No. of rows in Larger Grid
     var C = parseInt(RC[1]);//No. of columns in Larger Grid
-    console.log("No. of Rows = " + R);
-    console.log("No. of cols = " + C);
     var G = [];
     for (var G_i = 0; G_i < R; G_i ++  ) {
       G[G_i] = num[st + G_i + 2].split("");
-      console.log(G[G_i]);
     }// stored each row of large grid in G and split into array
-    console.log(G[1][3]);
     var rc = num[st + R + 2].split(" ");
     var r = parseInt(rc[0]);// No. of rows in smaller Grid
     var c = parseInt(rc[1]);// No. of columns in smaller Grid
-    console.log("No. of Rows = " + r);
-    console.log("No. of cols = " + c);
     var P = [];
     for (var P_i = 0; P_i < r; P_i++) {
       P[P_i] = num[st + P_i + R + 3].split("");// stored each row of small grid in P and split into array
-      console.log(P[P_i]);
     }// stored each row of small grid in P
     st = st + R + r + 2;// moves on to next set of grids
     // checking if small grid fits into large grid
-    var end = false, output = "", c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0;
-    while (end == false) {
-      console.log(c3);
-    //  if (c3 == (R - r) && c4 == (C - c) && P[c1][c2] != G[c3][c4]) {
-      //  output = "NO";
-    //    end = true;
-    //  }
-      //if (c2 == c - 1 && c1 == r - 1 && P[c1][c2] == G[c3][c4]) {
-      //  output = "YES";
-        //console.log("c1 = " + c1 + "c2 = " + c2 + "c3 = " + c3 + "c4 = " + c4);
-        //end = true;
-    //  }
-      if (c3 == R - r) {
-        c4++;
-        c3 = 0;
-      }
-      if (c1 == r) {
-        c2++;
-        c1 = 0;
-      }
-      if (P[c1][c2] == G[c3][c4]) {
-        if (c1 == r - 1 && c2 == c - 1 && c5 == c + r) {
-          output = "YES";
-          end = true;
+    var output = "NO";
+    function checkGrid(Gr,Gc) {
+      var r1 = Gr, c1 = Gc;
+      for (var i = 0; i < r; i++) {
+        for (var j = 0; j < c; j++) {
+          if (P[i][j] == G[r1][c1]) {
+            c1++;
+          }
+          else {
+            return false;
+          }
         }
-        else if (c3 == (R - r) && c4 == (C - c)) {
-          console.log("c5 = " + c5 + " c3 = " + c3 + " c4 = " + c4);
-          output = "NO";
-          end = true;
+        c1 = Gc;
+        r1++;
+      }
+      return true;
+    }
+    for (var G_j = 0; G_j <=R - r; G_j++) {
+      for (var G_k = 0; G_k <= C - c; G_k++) {
+        if (P[0][0] == G[G_j][G_k]) {
+          if (checkGrid(G_j, G_k) == true) {
+            G_j = R - r + 1;
+            output = "YES";
+            break;
+          }
         }
-        c1++;
-        c3++;
-        c5++;
       }
-      else {
-        c3++;
-        c1 = 0;
-        c5 = 0;
-      }
-
     }
-    if (output != "") {
-      console.log(output);
-    }
+    console.log(output);
   }
 }
-processData("1\n4 5\n84635\n12109\n76530\n41229\n2 2\n30\n29");
+//processData("1\n4 5\n84635\n12109\n76530\n41229\n2 2\n30\n29");
 //processData("2\n10 10\n7283455864\n6731158619\n8988242643\n3830589324\n2229505813\n5633845374\n6473530293\n7053106601\n0834282956\n4607924137\n3 4\n9505\n3845\n3530\n15 15\n400453592126560\n114213133098692\n474386082879648\n522356951189169\n887109450487496\n252802633388782\n5027714849667 48\n075975207693780\n511799789562806\n404007454272504\n549043809916080\n962410809534811\n445893523733475\n768705303214174\n650629270887160\n2 2\n99\n99");
+processData("2\n20 20\n34889246430321978567\n58957542800420926643\n35502505614464308821\n14858224623252492823\n72509980920257761017\n22842014894387119401\n01112950562348692493\n16417403478999610594\n79426411112116726706\n65175742483779283052\n89078730337964397201\n13765228547239925167\n26113704444636815161\n259932161628009\n5204488796416233981756034\n14416627212117283516\n15248825304941012863\n88460496662793369385\n59727291023618867708\n19755940017808628326\n7 4\n1641\n7942\n6517\n8907\n1376\n2691\n2599\n25 25\n7652157548860692421022503\n9283597467877865303553675\n4160389485250089289309493\n2583470721457150497569300\n3220130778636571709490905\n3588873017660047694725749\n9288991387848870159567061\n4840101673383478700737237\n8430916536880190158229898\n8986106490042260460547150\n2591460395957631878779378\n1816190871689680423501920\n0704047294563387014281341\n8544774664056811258209321\n9609294756392563447060526\n0170173859593369054590795\n6088985673796975810221577\n7738800757919472437622349\n5474120045253009653348388\n3930491401877849249410013\n1486477041403746396925337\n2955579022827592919878713\n2625547961868100985291514\n3673299809851325174555652\n4533398973801647859680907\n5 4\n5250\n1457\n8636\n7660\n7848");
