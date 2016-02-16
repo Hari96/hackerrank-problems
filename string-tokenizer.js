@@ -1,5 +1,5 @@
 function processData(input) {
-  var outArr = input.split(/[\s!\[,?.\\_'@\+\]]+/);\\ a regular expression to study!
+  var outArr = input.split(/[\s!\[,?.\\_'@\+\]]+/);// a regular expression to study!
   if (outArr[0] == "") {
     outArr.shift();
   }
