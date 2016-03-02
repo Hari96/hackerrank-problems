@@ -4,7 +4,8 @@ function processData(input) {
   for (var i = 1; i <= n; i++) {
     var strArr = num[i].split('');
     var l = strArr.length, newCode = 0, count = 0;
-    for (var j = 0; j < l; j++) {
+    var end = Math.ceil(l/2);
+    for (var j = 0; j < end; j++) {
       if (strArr[j] != strArr[l - j - 1]) {
         if (strArr[j] > strArr[l - j -1]) {
           while (strArr[j] > strArr[l - j -1]) {
@@ -23,6 +24,7 @@ function processData(input) {
       }// end of main if loop
     }
     console.log(count);
+    console.log(strArr.join(''));
     count = 0;
   }
 }
