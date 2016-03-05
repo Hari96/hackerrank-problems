@@ -32,7 +32,7 @@ var btn = document.getElementById("btn5");
                       val2 = 6;
                       break;
                   }
-                  btn.innerHTML = parseInt(val2);
+                  btn.innerHTML = val2;
                 }
               }
 
