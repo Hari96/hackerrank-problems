@@ -16,7 +16,7 @@ console.log(myMap(some_array, (x) => x + 1));  //increments array element by 1.
 console.log(myMap(some_array, (x) => x * 2 ));  //doubles each array element.
 console.log(myMap(some_array, (x) => x * x ));  //squares each array element.
 
-var some_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var some_array = [4, 5, 6, 7, 8, 9];
 function myFilter(my_array, callback) {
   var arr = [];
   for (var index in my_array) {
