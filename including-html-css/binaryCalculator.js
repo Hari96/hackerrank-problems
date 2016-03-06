@@ -1,4 +1,4 @@
-var op1 = "", op2 = "", op = "";
+var op1 = "", op2 = "", op = "", res = 0;
 var btnRes = document.getElementById("res");
 var btnSum = document.getElementById("btnSum");
 var btnSub = document.getElementById("btnSub");
@@ -28,6 +28,8 @@ btn0.onclick = function() {
   if (op == "") {
     op1 = op1 + "0";
     btnRes.innerHTML += "0";
+    res = op1;
+    res = res.toString(2);
   }
   else {
     op2 = op2 + "0";
@@ -38,6 +40,8 @@ btn1.onclick = function() {
   if (op == "") {
     op1 = op1 + "1";
     btnRes.innerHTML += 1;
+    res = op1;
+    res = res.toString(2);
   }
   else {
     op2 = op2 + "1";
@@ -45,25 +49,41 @@ btn1.onclick = function() {
   }
 };
 btnEql.onclick = function() {
-  op1 = parseInt(op1, 2);
-  op2 = parseInt(op2, 2);
+  if (op1 != "" || op2 != "") {
+    op1 = parseInt(op1, 2);
+    op2 = parseInt(op2, 2);
+  }
   switch(op) {
     case "+":
-      var res = op1 + op2;
+      res = op1 + op2;
+      res = res.toString(2);
+      btnRes.innerHTML = res;
       break;
     case "-":
-      var res = op1 - op2;
+      res = op1 - op2;
+      res = res.toString(2);
+      btnRes.innerHTML = res;
       break;
     case "*":
-      var res = op1 * op2;
+      res = op1 * op2;
+      res = res.toString(2);
+      btnRes.innerHTML = res;
       break;
     case "/":
-      var res = Math.floor(op1/op2);
+      res = Math.floor(op1/op2);
+      res = res.toString(2);
+      btnRes.innerHTML = res;
       break;
+    case "":
+      btnRes.innerHTML = res;
+      break;
+    default:
+      btnRes.innerHTML = res;
   }
   op = "";
-  res = res.toString(2);
-  btnRes.innerHTML = res;
+  op1 = "";
+  op2 = "";
+
 };
 btnClr.onclick = function() {
   btnRes.innerHTML = "";

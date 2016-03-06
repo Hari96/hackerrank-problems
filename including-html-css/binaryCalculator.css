@@ -2,12 +2,13 @@
   background-color: lightgray;
   width: 81%;
   height: 48px;
-  font-size: 20px;
+  font-size: 30px;
+  border-style: solid;
 }
 #btns {
   width: 90%;
 }
-#btns > button {
+#btns button {
   width: 22%;
   height: 36px;
   font-size: 18px;
